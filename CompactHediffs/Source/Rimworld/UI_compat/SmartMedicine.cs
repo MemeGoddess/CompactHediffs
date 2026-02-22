@@ -15,11 +15,7 @@ namespace PeteTimesSix.CompactHediffs.Rimworld.UI_compat
 
 		public static void DrawSmartMedicineIcon(Rect rowRect, List<Hediff> hediffs, ref float widthAccumulator, int iconWidth)
 		{
-			var maxCareHediff = HighestCarePriority(hediffs);
-			if(maxCareHediff == null)
-				return;
-
-            var icons = SmartMedicine.GetElements(maxCareHediff);
+            var icons = SmartMedicine.GetElementsByList(hediffs);
 
             foreach (var icon in icons)
             {
@@ -37,22 +33,6 @@ namespace PeteTimesSix.CompactHediffs.Rimworld.UI_compat
             var list = SmartMedicine.CreateCareMenuOptionsWithList(hediffs.ToList());
             Find.WindowStack.Add(new FloatMenu(list));
         }
-
-        private static Hediff HighestCarePriority(List<Hediff> hediffs) //heck if I know how to get an out parameter through traverse
-		{
-			var care = MedicalCareCategory.NoCare;
-			Hediff maxCareHediff = null;
-			var hediffCares =  SmartMedicine.PriorityCareCompGet();
-			foreach (Hediff h in hediffs)
-			{
-				if (h.TendableNow(true) && hediffCares.TryGetValue(h, out MedicalCareCategory heCare))
-				{
-					care = heCare > care ? heCare : care;
-					maxCareHediff = h;
-				}
-			}
-			return maxCareHediff;
-		}
 	}
 }
 

@@ -19,12 +19,12 @@ namespace PeteTimesSix.CompactHediffs.ModCompat
 		public static Texture2D[] careTextures;
 
 		public delegate List<FloatMenuOption> _CreateCareMenuOptionsWithList(List<Hediff> affectedHediffs, Hediff primaryHediff = null);
-        public delegate List<Action<Rect>> _GetElements(Hediff hediff);
+        public delegate List<Action<Rect>> _GetElementsByList(List<Hediff> hediffs);
 		public delegate Dictionary<Hediff, MedicalCareCategory> _PriorityCareCompGet();
 		public delegate MedicalCareCategory _GetCare(Pawn pawn);
 
         public static _CreateCareMenuOptionsWithList CreateCareMenuOptionsWithList;
-        public static _GetElements GetElements;
+        public static _GetElementsByList GetElementsByList;
 		public static _PriorityCareCompGet PriorityCareCompGet;
 		public static _GetCare GetCare;
 
@@ -43,8 +43,8 @@ namespace PeteTimesSix.CompactHediffs.ModCompat
                 CreateCareMenuOptionsWithList = AccessTools.MethodDelegate<_CreateCareMenuOptionsWithList>(
                     AccessTools.Method("SmartMedicine.HediffRowPriorityCare:CreateCareMenuOptionsWithList"));
 
-                GetElements = AccessTools.MethodDelegate<_GetElements>(
-                    AccessTools.Method("SmartMedicine.HediffRowPriorityCare:GetElements"));
+                GetElementsByList = AccessTools.MethodDelegate<_GetElementsByList>(
+                    AccessTools.Method("SmartMedicine.HediffRowPriorityCare:GetElementsByList"));
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace PeteTimesSix.CompactHediffs.ModCompat
                           $"\n{nameof(PriorityCareCompGet)}: {PriorityCareCompGet != null}" +
                           $"\n{nameof(GetCare)}: {GetCare != null}" +
                           $"\n{nameof(CreateCareMenuOptionsWithList)}: {CreateCareMenuOptionsWithList != null}" +
-                          $"\n{nameof(GetElements)}: {GetElements != null}" +
+                          $"\n{nameof(GetElementsByList)}: {GetElementsByList != null}" +
                           $"\n{ex.Message}" +
                           $"\n{ex.StackTrace}");
                 active = false;

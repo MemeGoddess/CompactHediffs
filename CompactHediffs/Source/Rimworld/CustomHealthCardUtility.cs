@@ -355,8 +355,7 @@ namespace PeteTimesSix.CompactHediffs.Rimworld
 				GUI.color = Color.white;
 				if (SmartMedicine.active)
 				{
-					MedicalCareCategory defaultCare = SmartMedicine.GetCare(pawn);
-					UI_SmartMedicine.AddSmartMedicineFloatMenuButton(fullHediffRect, hediffsByPriority, defaultCare);
+					UI_SmartMedicine.AddSmartMedicineFloatMenuButton(fullHediffRect, hediffsByPriority);
 				}
 
 

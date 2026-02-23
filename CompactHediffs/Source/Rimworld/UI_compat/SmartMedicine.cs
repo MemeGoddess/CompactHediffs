@@ -25,7 +25,7 @@ namespace PeteTimesSix.CompactHediffs.Rimworld.UI_compat
 			}
         }
 
-		public static void AddSmartMedicineFloatMenuButton(Rect buttonRect, List<Hediff> hediffs, MedicalCareCategory defaultCare)
+		public static void AddSmartMedicineFloatMenuButton(Rect buttonRect, List<Hediff> hediffs)
         {
             if (Event.current.button != 1 || !Widgets.ButtonInvisible(buttonRect) || !hediffs.Any(h => h.TendableNow(true)))
                 return;
